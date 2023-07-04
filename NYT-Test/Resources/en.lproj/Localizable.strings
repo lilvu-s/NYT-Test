@@ -1,0 +1,13 @@
+//
+//  Localizable.strings
+//  NYT-Test
+//
+//  Created by Ангеліна Семенченко on 04.07.2023.
+//
+
+"category_name" = "%@";
+"categories_screen_title" = "Categories";
+
+"alert_error" = "Error";
+"response_serialization_error" = "The API limit of 5 requests per minute has been violated.";
+"unknown_error" = "An error occurred. Please try again later.";

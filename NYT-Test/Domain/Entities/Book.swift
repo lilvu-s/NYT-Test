@@ -8,18 +8,18 @@
 import Foundation
 
 struct BooksResponse: Codable {
-    let results: [BookResults]
+    let results: ResultContainer
+}
 
-    struct BookResults: Codable {
-        let listName: String
-        let listNameEncoded: String
-        let books: [Book]
+struct ResultContainer: Codable {
+    let listName: String
+    let listNameEncoded: String
+    let books: [Book]
 
-        enum CodingKeys: String, CodingKey {
-            case listName = "list_name"
-            case listNameEncoded = "list_name_encoded"
-            case books
-        }
+    enum CodingKeys: String, CodingKey {
+        case listName = "list_name"
+        case listNameEncoded = "list_name_encoded"
+        case books
     }
 }
 

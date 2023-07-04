@@ -1,0 +1,13 @@
+//
+//  Localizable.strings
+//  NYT-Test
+//
+//  Created by Ангеліна Семенченко on 04.07.2023.
+//
+
+"category_name" = "%@";
+"categories_screen_title" = "Категорії";
+
+"alert_error" = "Помилка";
+"response_serialization_error" = "Порушено обмеження API в 5 запитів на хвилину.";
+"unknown_error" = "Виникла помилка. Будь ласка, спробуйте пізніше.";

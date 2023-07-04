@@ -6,3 +6,6 @@
 //
 
 import Foundation
+
+//TODO: both lists must be cashed and saved to core data
+
