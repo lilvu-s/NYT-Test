@@ -5,25 +5,60 @@
 //  Created by Ангеліна Семенченко on 03.07.2023.
 //
 
+import Foundation
 import Alamofire
+import UIKit
 
 protocol BooksInteractorProtocol: AnyObject {
-    func fetchBooks(for category: Category) async throws -> [Book]
+    func fetchBooks() async throws -> [Book]
+    func loadBookDetails(id: String) async throws -> Book
+    
+    var books: [Book] { get }
 }
 
 final class BooksInteractor: BooksInteractorProtocol {
     private let networkingWorker: NetworkingWorker
+    var books: [Book] = []
+    let category: Category
     
-    init(networkingWorker: NetworkingWorker) {
+    init(category: Category, networkingWorker: NetworkingWorker) {
+        self.category = category
         self.networkingWorker = networkingWorker
     }
     
-    func fetchBooks(for category: Category) async throws -> [Book] {
+    func fetchBooks() async throws -> [Book] {
         do {
-            let books = try await networkingWorker.fetchBooks(for: category.listNameEncoded)
+            books = try await networkingWorker.fetchBooks(for: category.listNameEncoded)
+            
             return books
         } catch let error as AFError {
             throw ErrorHandler.handleRequestError(error)
         }
+    }
+    
+    func loadBookDetails(id: String) async throws -> Book {
+        guard let book = books.first(where: { $0.id == id }) else {
+            throw BookLoaderError.bookNotFound
+        }
+        
+        return book
+    }
+    
+    func loadImages() async throws -> [UIImage] {
+        var images: [UIImage] = []
+        
+        do {
+            for book in books {
+                guard let imageURL = book.bookImage else { continue }
+                
+                do {
+                    let image = try await ImageLoader.shared.loadImage(from: imageURL)
+                    images.append(image)
+                } catch {
+                    print("Failed to load image for book \(book.title): \(error)")
+                }
+            }
+        }
+        return images
     }
 }

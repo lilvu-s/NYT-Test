@@ -2,24 +2,24 @@
 //  CategoriesRouter.swift
 //  NYT-Test
 //
-//  Created by Ангеліна Семенченко on 04.07.2023.
+//  Created by Ангеліна Семенченко on 06.07.2023.
 //
 
 import Foundation
 
 protocol CategoriesRouterProtocol: AnyObject {
-    func navigateToBooks(for category: Category)
+    func navigateToBooksList(for category: Category)
 }
 
 final class CategoriesRouter: CategoriesRouterProtocol {
-    weak var viewController: BooksCollectionViewControllerProtocol?
+    weak var categoriesViewController: CategoriesTableViewControllerProtocol?
     
-    init(viewController: BooksCollectionViewControllerProtocol) {
-        self.viewController = viewController
+    init(categoriesViewController: CategoriesTableViewControllerProtocol) {
+        self.categoriesViewController = categoriesViewController
     }
     
-    func navigateToBooks(for category: Category) {
-        guard let viewController = viewController else {
+    func navigateToBooksList(for category: Category) {
+        guard let viewController = categoriesViewController else {
             return
         }
         
@@ -27,3 +27,4 @@ final class CategoriesRouter: CategoriesRouterProtocol {
         viewController.navigationController?.pushViewController(booksViewController, animated: true)
     }
 }
+

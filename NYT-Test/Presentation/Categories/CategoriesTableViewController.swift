@@ -12,11 +12,15 @@ protocol CategoriesTableViewControllerProtocol: AnyObject {
     func didFetchCategories(_ category: [Category])
     func didFailWithError(_ error: NetworkingError)
     func didSelectCategory(_ category: Category)
+    
+    var navigationController: UINavigationController? { get }
 }
 
 final class CategoriesTableViewController: UITableViewController, CategoriesTableViewControllerProtocol {
     private var categories: [Category] = []
+    private var selectedCategory: Category?
     private var presenter: CategoriesPresenterProtocol
+    private var router: CategoriesRouter?
     
     init(presenter: CategoriesPresenterProtocol) {
         self.presenter = presenter
@@ -53,6 +57,10 @@ final class CategoriesTableViewController: UITableViewController, CategoriesTabl
     
     // MARK: - CategoriesTableViewControllerProtocol Methods
     
+    func setRouter(_ router: CategoriesRouter) {
+        self.router = router
+    }
+    
     func didFetchCategories(_ categories: [Category]) {
         self.categories = categories
         tableView.reloadData()
@@ -63,8 +71,8 @@ final class CategoriesTableViewController: UITableViewController, CategoriesTabl
     }
     
     func didSelectCategory(_ category: Category) {
-        let booksViewController = VCFactory.createBooksController(for: category)
-        navigationController?.pushViewController(booksViewController, animated: true)
+        selectedCategory = category
+        router?.navigateToBooksList(for: category)
     }
     
     // MARK: - Table View Data Source
@@ -88,10 +96,4 @@ final class CategoriesTableViewController: UITableViewController, CategoriesTabl
         let selectedCategory = categories[indexPath.row]
         didSelectCategory(selectedCategory)
     }
-    
-    //    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 10))
-    //        headerView.backgroundColor = .clear
-    //        return headerView
-    //    }
 }

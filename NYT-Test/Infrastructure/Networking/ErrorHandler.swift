@@ -27,6 +27,28 @@ final class ErrorHandler {
             return NetworkingError.unknown
         }
     }
+    
+    static func handlerBookLoaderError(_ error: Error) -> BookLoaderError {
+        if let error = error as? BookLoaderError {
+            switch error {
+            case .bookNotFound:
+                print("Book not found")
+                return .bookNotFound
+            case .indexOutOfRange:
+                print("Index out of range")
+                return .indexOutOfRange
+            case .invalidImageData:
+                print("Invalid image data")
+                return .invalidImageData
+            default:
+                print("Unknown book loader error")
+                return .unknown
+            }
+        } else {
+            print("Unknown error")
+            return .unknown
+        }
+    }
 }
 
 enum NetworkingError: Error {
@@ -36,5 +58,12 @@ enum NetworkingError: Error {
     case responseSerializationFailed
     case requestFailed
     case rateLimitExceeded
+    case unknown
+}
+
+enum BookLoaderError: Error {
+    case bookNotFound
+    case indexOutOfRange
+    case invalidImageData
     case unknown
 }

@@ -12,13 +12,12 @@ protocol BookCellProtocol: AnyObject {
     func bookCellDidTapBook(_ cell: BookCell)
 }
 
-//TODO: book’s name, description, author, publisher, image, rank, link to buy this book, opened inside the app
-
 final class BookCell: UICollectionViewCell {
     private var bookImageView: UIImageView!
     private var titleLabel: UILabel!
     private var authorLabel: UILabel!
     weak var delegate: BookCellProtocol?
+    private var interactor: BooksInteractor?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,8 +32,7 @@ final class BookCell: UICollectionViewCell {
     
     private func setupViews() {
         bookImageView = UIImageView()
-        bookImageView.contentMode = .scaleAspectFit
-        bookImageView.backgroundColor = .gray
+        bookImageView.contentMode = .scaleAspectFill
         contentView.addSubview(bookImageView)
         
         titleLabel = UILabel()
@@ -76,12 +74,10 @@ final class BookCell: UICollectionViewCell {
     func configure(with book: Book) {
         titleLabel.text = book.title
         authorLabel.text = book.author
-        
-        loadImage(from: book.bookImage)
     }
     
-    private func loadImage(from url: URL) {
-        // TODO: Implement async image loading
+    func configureImage(with image: UIImage) {
+        bookImageView.image = image
     }
     
     @objc private func bookTapped() {
