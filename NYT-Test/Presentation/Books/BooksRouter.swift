@@ -24,6 +24,6 @@ final class BooksRouter: BooksRouterProtocol {
         }
         
         let bookDetailsViewController = VCFactory.createBookDetailsController(book: book)
-        viewController.navigationController?.present(bookDetailsViewController, animated: true, completion: nil)
+        viewController.navigationController?.present(bookDetailsViewController, animated: true)
     }
 }

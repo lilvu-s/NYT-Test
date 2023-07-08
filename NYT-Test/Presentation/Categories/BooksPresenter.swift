@@ -17,20 +17,28 @@ protocol BooksPresenterProtocol: AnyObject {
 
 final class BooksPresenter: BooksPresenterProtocol {
     weak var viewController: BooksCollectionViewControllerProtocol?
-    let interactor: BooksInteractor
+    let interactor: BooksInteractorProtocol
     
-    init(interactor: BooksInteractor) {
+    init(interactor: BooksInteractorProtocol) {
         self.interactor = interactor
     }
     
     func fetchBooks() {
         Task {
             do {
-                let books = try await interactor.fetchBooks()
-                let images = try await interactor.loadImages()
-                
-                didFetchBooks(books)
-                didFetchImages(images)
+                if NetworkingWorker.shared.isConnectedToInternet() {
+                    let books = try await interactor.fetchBooks()
+                    let images = try await interactor.loadImages()
+                    
+                    didFetchBooks(books)
+                    didFetchImages(images)
+                } else {
+                    let books = interactor.loadBooksFromRealm()
+                    let images = interactor.loadImagesFromRealm()
+                    
+                    didFetchBooks(books)
+                    didFetchImages(images)
+                }
             } catch let error as NetworkingError {
                 didFailWithError(error)
             } catch {

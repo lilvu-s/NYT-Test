@@ -22,6 +22,10 @@ final class NetworkingWorker {
         self.requestPeriodStart = Date()
     }
     
+    func isConnectedToInternet() -> Bool {
+        return NetworkReachabilityManager()?.isReachable ?? false
+    }
+    
     func fetchCategories() async throws -> [Category] {
         let baseURL = "https://api.nytimes.com/svc/books/v3/lists"
         let path = "/names.json"

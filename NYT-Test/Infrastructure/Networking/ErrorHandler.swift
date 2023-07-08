@@ -86,6 +86,7 @@ enum BookLoaderError: Error {
 
 enum ImageLoaderError: Error {
     case invalidImageData
+    case imageLoadFailed
     case imageNotFound
     case unknown
 }

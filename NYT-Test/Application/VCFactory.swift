@@ -9,9 +9,10 @@ import Foundation
 
 final class VCFactory {
     static var currentBooksInteractor: BooksInteractorProtocol?
+    static let realmManager = RealmManager()
     
     static func createCategoriesController() -> CategoriesTableViewController {
-        let interactor = CategoriesInteractor(networkingWorker: NetworkingWorker.shared)
+        let interactor = CategoriesInteractor(networkingWorker: NetworkingWorker.shared, realmManager: realmManager)
         let presenter = CategoriesPresenter(interactor: interactor)
         let viewController = CategoriesTableViewController(presenter: presenter)
         let router = CategoriesRouter(categoriesViewController: viewController)
@@ -23,7 +24,7 @@ final class VCFactory {
     }
     
     static func createBooksController(for category: Category) -> BooksCollectionViewController {
-        let interactor = BooksInteractor(category: category, networkingWorker: NetworkingWorker.shared)
+        let interactor = BooksInteractor(category: category, networkingWorker: NetworkingWorker.shared, realmManager: realmManager)
         let presenter = BooksPresenter(interactor: interactor)
         let viewController = BooksCollectionViewController(presenter: presenter)
         let router = BooksRouter(booksViewController: viewController)

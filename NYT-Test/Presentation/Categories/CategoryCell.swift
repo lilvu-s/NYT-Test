@@ -8,8 +8,8 @@
 import UIKit
 
 final class CategoryCell: UITableViewCell {
-    private var nameLabel: UILabel!
-    private var dateLabel: UILabel!
+    private var nameLabel: UILabel = UILabel()
+    private var dateLabel: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,11 +23,9 @@ final class CategoryCell: UITableViewCell {
     }
     
     private func setupViews() {
-        nameLabel = UILabel()
         nameLabel.textColor = .black
         contentView.addSubview(nameLabel)
         
-        dateLabel = UILabel()
         dateLabel.textColor = .gray
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         contentView.addSubview(dateLabel)

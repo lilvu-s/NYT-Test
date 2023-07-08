@@ -12,7 +12,7 @@ protocol BookDetailsPresenterProtocol: AnyObject {
     func fetchBookCover()
 }
 
-class BookDetailsPresenter: BookDetailsPresenterProtocol {
+final class BookDetailsPresenter: BookDetailsPresenterProtocol {
     weak var viewController: BookDetailsViewControllerProtocol?
     var interactor: BookDetailsInteractor
     
@@ -35,7 +35,7 @@ class BookDetailsPresenter: BookDetailsPresenterProtocol {
     func fetchBookCover() {
         Task {
             do {
-                let image = try await interactor.loadImage()
+                let image = try await interactor.loadBookCover()
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.viewController?.updateWithBookCover(image: image)

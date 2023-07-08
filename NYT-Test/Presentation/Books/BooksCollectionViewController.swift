@@ -95,11 +95,11 @@ final class BooksCollectionViewController: UIViewController, BooksCollectionView
     
     private func showError(message: String) {
         let title = NSLocalizedString("alert_error", comment: "Error")
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        present(alert, animated: true)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        present(alertController, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            alert.dismiss(animated: true, completion: { [weak self] in
+            alertController.dismiss(animated: true, completion: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
             })
         }
@@ -109,17 +109,17 @@ final class BooksCollectionViewController: UIViewController, BooksCollectionView
         if case .responseSerializationFailed = error {
             let message = NSLocalizedString("response_serialization_error", comment: "Response Serialization Error")
             showError(message: message)
-        } else {
-            let message = NSLocalizedString("unknown_error", comment: "Unknown error occured")
+        } else if NetworkingWorker.shared.isConnectedToInternet() {
+            let message = NSLocalizedString("other_error", comment: "Other Error")
             showError(message: message)
         }
     }
     
-    private func buyButtonTapped(for book: Book) {
-        // TODO: end it
+    deinit {
+        print("BooksCollectionViewController deinitialized")
     }
     
-    /* my localization is not working for arguments
+    /* my localization is not working for properties
      private func localizeTitle() {
      // title = String(format: NSLocalizedString("category_name", comment: "Category Name"))
      

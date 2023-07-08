@@ -26,7 +26,12 @@ final class BookDetailsInteractor: BookDetailsInteractorProtocol {
         return book
     }
     
-    func loadImage() async throws -> UIImage {
+    func loadBookCover()  async throws -> UIImage {
+        let image = try await booksInteractor.loadBookCover(id: id)
+        return image
+    }
+    
+    func loadImages() async throws -> UIImage {
         let images = try await booksInteractor.loadImages()
         let book = try await loadBookDetails()
         

@@ -13,11 +13,11 @@ protocol BookCellProtocol: AnyObject {
 }
 
 final class BookCell: UICollectionViewCell {
-    private var bookImageView: UIImageView!
-    private var titleLabel: UILabel!
-    private var authorLabel: UILabel!
+    private var bookImageView: UIImageView = UIImageView()
+    private var titleLabel: UILabel = UILabel()
+    private var authorLabel: UILabel = UILabel()
     weak var delegate: BookCellProtocol?
-    private var interactor: BooksInteractor?
+    private var interactor: BooksInteractorProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,22 +31,19 @@ final class BookCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        bookImageView = UIImageView()
         bookImageView.contentMode = .scaleToFill
         contentView.addSubview(bookImageView)
         
-        titleLabel = UILabel()
         titleLabel.textAlignment = .left
         titleLabel.textColor = .black
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         titleLabel.numberOfLines = 2
         contentView.addSubview(titleLabel)
         
-        authorLabel = UILabel()
         authorLabel.textAlignment = .left
         authorLabel.textColor = .black
         authorLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        authorLabel.numberOfLines = 0
+        authorLabel.numberOfLines = 2
         contentView.addSubview(authorLabel)
     }
     

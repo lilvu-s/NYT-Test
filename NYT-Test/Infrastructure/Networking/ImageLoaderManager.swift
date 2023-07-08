@@ -10,25 +10,24 @@ import UIKit
 
 final class ImageLoader {
     static let shared = ImageLoader()
+    private let imageCache = NSCache<NSString, UIImage>()
     
     private init() {}
     
     func loadImage(from url: URL) async throws -> UIImage {
-        return try await withCheckedThrowingContinuation { continuation in
-            AF.download(url).responseData { response in
-                switch response.result {
-                case .success(let data):
-                    if let image = UIImage(data: data) {
-                        continuation.resume(returning: image)
-                    } else {
-                        let error = ImageLoaderError.invalidImageData
-                        continuation.resume(throwing: ErrorHandler.handlerImageLoaderError(error))
-                    }
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
+        let cacheKey = url.absoluteString as NSString
+        
+        if let cachedImage = imageCache.object(forKey: cacheKey) {
+            return cachedImage
         }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        guard let image = UIImage(data: data) else {
+            return UIImage()
+        }
+        
+        imageCache.setObject(image, forKey: cacheKey)
+        return image
     }
 }
 

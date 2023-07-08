@@ -10,7 +10,6 @@
 		8E0A3B712A533FFB00CC78C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B702A533FFB00CC78C6 /* AppDelegate.swift */; };
 		8E0A3B732A533FFB00CC78C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B722A533FFB00CC78C6 /* SceneDelegate.swift */; };
 		8E0A3B752A533FFB00CC78C6 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B742A533FFB00CC78C6 /* CategoriesTableViewController.swift */; };
-		8E0A3B7B2A533FFB00CC78C6 /* NYT_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B792A533FFB00CC78C6 /* NYT_Test.xcdatamodeld */; };
 		8E0A3B7D2A53400300CC78C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0A3B7C2A53400300CC78C6 /* Assets.xcassets */; };
 		8E0A3B802A53400300CC78C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E0A3B7E2A53400300CC78C6 /* LaunchScreen.storyboard */; };
 		8E0A3B8B2A53436F00CC78C6 /* VCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B8A2A53436F00CC78C6 /* VCFactory.swift */; };
@@ -25,16 +24,18 @@
 		8E9279292A56F28E0049B063 /* BookDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9279282A56F28E0049B063 /* BookDetailsPresenter.swift */; };
 		8E92792E2A570DF50049B063 /* BookDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92792D2A570DF50049B063 /* BookDetailsInteractor.swift */; };
 		8E9279302A571D4A0049B063 /* CategoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92792F2A571D490049B063 /* CategoriesRouter.swift */; };
-		8E9279332A58A58B0049B063 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9279322A58A58B0049B063 /* SnapKit */; };
 		8E9279352A58B2EB0049B063 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9279342A58B2EA0049B063 /* Data+Extension.swift */; };
+		8E92793A2A597DD90049B063 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9279392A597DD90049B063 /* RealmManager.swift */; };
+		8E92793C2A597E4C0049B063 /* RealmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92793B2A597E4C0049B063 /* RealmModels.swift */; };
+		8E9279442A5982800049B063 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9279432A5982800049B063 /* SnapKit */; };
+		8E9279612A5986BD0049B063 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9279602A5986BD0049B063 /* Realm */; };
+		8E9279632A5986BD0049B063 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9279622A5986BD0049B063 /* RealmSwift */; };
 		8EF7F2AB2A536DCF0039AAC1 /* CategoriesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2AA2A536DCF0039AAC1 /* CategoriesInteractor.swift */; };
 		8EF7F2AD2A536DDB0039AAC1 /* BooksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2AC2A536DDB0039AAC1 /* BooksInteractor.swift */; };
 		8EF7F2AF2A536E8B0039AAC1 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2AE2A536E8B0039AAC1 /* CategoriesPresenter.swift */; };
 		8EF7F2B12A536E990039AAC1 /* BooksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B02A536E990039AAC1 /* BooksCollectionViewController.swift */; };
-		8EF7F2B52A536EB90039AAC1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B42A536EB90039AAC1 /* CoreDataManager.swift */; };
 		8EF7F2B72A536F4D0039AAC1 /* BooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B62A536F4D0039AAC1 /* BooksPresenter.swift */; };
 		8EF7F2B92A536F640039AAC1 /* BooksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B82A536F640039AAC1 /* BooksRouter.swift */; };
-		8EF7F2BC2A5371D50039AAC1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8EF7F2BB2A5371D50039AAC1 /* SnapKit */; };
 		8EFC36B02A54604900DA2F26 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC36AF2A54604900DA2F26 /* CategoryCell.swift */; };
 		8EFC36B52A5469E600DA2F26 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EFC36B72A5469E600DA2F26 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -44,7 +45,6 @@
 		8E0A3B702A533FFB00CC78C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E0A3B722A533FFB00CC78C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8E0A3B742A533FFB00CC78C6 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
-		8E0A3B7A2A533FFB00CC78C6 /* NYT_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NYT_Test.xcdatamodel; sourceTree = "<group>"; };
 		8E0A3B7C2A53400300CC78C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E0A3B7F2A53400300CC78C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E0A3B812A53400300CC78C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,11 +60,12 @@
 		8E92792D2A570DF50049B063 /* BookDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsInteractor.swift; sourceTree = "<group>"; };
 		8E92792F2A571D490049B063 /* CategoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRouter.swift; sourceTree = "<group>"; };
 		8E9279342A58B2EA0049B063 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		8E9279392A597DD90049B063 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		8E92793B2A597E4C0049B063 /* RealmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModels.swift; sourceTree = "<group>"; };
 		8EF7F2AA2A536DCF0039AAC1 /* CategoriesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesInteractor.swift; sourceTree = "<group>"; };
 		8EF7F2AC2A536DDB0039AAC1 /* BooksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksInteractor.swift; sourceTree = "<group>"; };
 		8EF7F2AE2A536E8B0039AAC1 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		8EF7F2B02A536E990039AAC1 /* BooksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCollectionViewController.swift; sourceTree = "<group>"; };
-		8EF7F2B42A536EB90039AAC1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8EF7F2B62A536F4D0039AAC1 /* BooksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BooksPresenter.swift; path = ../Categories/BooksPresenter.swift; sourceTree = "<group>"; };
 		8EF7F2B82A536F640039AAC1 /* BooksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRouter.swift; sourceTree = "<group>"; };
 		8EFC36AF2A54604900DA2F26 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -77,9 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E9279332A58A58B0049B063 /* SnapKit in Frameworks */,
+				8E9279632A5986BD0049B063 /* RealmSwift in Frameworks */,
+				8E9279612A5986BD0049B063 /* Realm in Frameworks */,
 				8E0A3B982A5354CD00CC78C6 /* Alamofire in Frameworks */,
-				8EF7F2BC2A5371D50039AAC1 /* SnapKit in Frameworks */,
+				8E9279442A5982800049B063 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +151,7 @@
 		8E0A3B8C2A5343A800CC78C6 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				8E0A3B8E2A5343BB00CC78C6 /* CoreData */,
+				8E0A3B8E2A5343BB00CC78C6 /* Realm */,
 				8E0A3B8D2A5343B500CC78C6 /* Networking */,
 			);
 			path = Infrastructure;
@@ -165,13 +167,12 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		8E0A3B8E2A5343BB00CC78C6 /* CoreData */ = {
+		8E0A3B8E2A5343BB00CC78C6 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				8EF7F2B42A536EB90039AAC1 /* CoreDataManager.swift */,
-				8E0A3B792A533FFB00CC78C6 /* NYT_Test.xcdatamodeld */,
+				8E9279392A597DD90049B063 /* RealmManager.swift */,
 			);
-			path = CoreData;
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		8E0A3B932A534FE900CC78C6 /* Domain */ = {
@@ -219,6 +220,7 @@
 			children = (
 				8E0A3B992A53551600CC78C6 /* Book.swift */,
 				8E0A3B942A534FF600CC78C6 /* Category.swift */,
+				8E92793B2A597E4C0049B063 /* RealmModels.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -251,8 +253,9 @@
 			name = "NYT-Test";
 			packageProductDependencies = (
 				8E0A3B972A5354CD00CC78C6 /* Alamofire */,
-				8EF7F2BB2A5371D50039AAC1 /* SnapKit */,
-				8E9279322A58A58B0049B063 /* SnapKit */,
+				8E9279432A5982800049B063 /* SnapKit */,
+				8E9279602A5986BD0049B063 /* Realm */,
+				8E9279622A5986BD0049B063 /* RealmSwift */,
 			);
 			productName = "NYT-Test";
 			productReference = 8E0A3B6D2A533FFB00CC78C6 /* NYT-Test.app */;
@@ -285,8 +288,8 @@
 			mainGroup = 8E0A3B642A533FFB00CC78C6;
 			packageReferences = (
 				8E0A3B962A5354CD00CC78C6 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				8EF7F2BA2A5371D50039AAC1 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				8E9279312A58A58B0049B063 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8E9279422A5982800049B063 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8E92795F2A5986BD0049B063 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 8E0A3B6E2A533FFB00CC78C6 /* Products */;
 			projectDirPath = "";
@@ -320,15 +323,16 @@
 				8E92792E2A570DF50049B063 /* BookDetailsInteractor.swift in Sources */,
 				8E9279262A56EE5C0049B063 /* BookDetailsViewController.swift in Sources */,
 				8E4BA6492A537E96005EA87C /* BookCell.swift in Sources */,
+				8E92793A2A597DD90049B063 /* RealmManager.swift in Sources */,
 				8E0A3B752A533FFB00CC78C6 /* CategoriesTableViewController.swift in Sources */,
 				8E0A3B8B2A53436F00CC78C6 /* VCFactory.swift in Sources */,
 				8E0A3B9A2A53551600CC78C6 /* Book.swift in Sources */,
-				8EF7F2B52A536EB90039AAC1 /* CoreDataManager.swift in Sources */,
 				8EFC36B02A54604900DA2F26 /* CategoryCell.swift in Sources */,
 				8EF7F2B12A536E990039AAC1 /* BooksCollectionViewController.swift in Sources */,
 				8EF7F2B72A536F4D0039AAC1 /* BooksPresenter.swift in Sources */,
 				8E0A3B712A533FFB00CC78C6 /* AppDelegate.swift in Sources */,
 				8EF7F2AB2A536DCF0039AAC1 /* CategoriesInteractor.swift in Sources */,
+				8E92793C2A597E4C0049B063 /* RealmModels.swift in Sources */,
 				8E0A3B952A534FF600CC78C6 /* Category.swift in Sources */,
 				8EF7F2AF2A536E8B0039AAC1 /* CategoriesPresenter.swift in Sources */,
 				8EF7F2AD2A536DDB0039AAC1 /* BooksInteractor.swift in Sources */,
@@ -336,7 +340,6 @@
 				8E0A3B732A533FFB00CC78C6 /* SceneDelegate.swift in Sources */,
 				8E0A3B9C2A535DBA00CC78C6 /* ErrorHandler.swift in Sources */,
 				8E9279302A571D4A0049B063 /* CategoriesRouter.swift in Sources */,
-				8E0A3B7B2A533FFB00CC78C6 /* NYT_Test.xcdatamodeld in Sources */,
 				8E0A3B902A534F4500CC78C6 /* NetworkingWorker.swift in Sources */,
 				8EF7F2B92A536F640039AAC1 /* BooksRouter.swift in Sources */,
 			);
@@ -567,7 +570,7 @@
 				kind = branch;
 			};
 		};
-		8E9279312A58A58B0049B063 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		8E9279422A5982800049B063 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -575,12 +578,12 @@
 				kind = branch;
 			};
 		};
-		8EF7F2BA2A5371D50039AAC1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		8E92795F2A5986BD0049B063 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 10.39.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -591,30 +594,22 @@
 			package = 8E0A3B962A5354CD00CC78C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		8E9279322A58A58B0049B063 /* SnapKit */ = {
+		8E9279432A5982800049B063 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8E9279312A58A58B0049B063 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 8E9279422A5982800049B063 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		8EF7F2BB2A5371D50039AAC1 /* SnapKit */ = {
+		8E9279602A5986BD0049B063 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EF7F2BA2A5371D50039AAC1 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
+			package = 8E92795F2A5986BD0049B063 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8E9279622A5986BD0049B063 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E92795F2A5986BD0049B063 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		8E0A3B792A533FFB00CC78C6 /* NYT_Test.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8E0A3B7A2A533FFB00CC78C6 /* NYT_Test.xcdatamodel */,
-			);
-			currentVersion = 8E0A3B7A2A533FFB00CC78C6 /* NYT_Test.xcdatamodel */;
-			path = NYT_Test.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8E0A3B652A533FFB00CC78C6 /* Project object */;
 }

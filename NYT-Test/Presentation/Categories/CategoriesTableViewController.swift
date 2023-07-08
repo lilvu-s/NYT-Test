@@ -67,7 +67,15 @@ final class CategoriesTableViewController: UITableViewController, CategoriesTabl
     }
     
     func didFailWithError(_ error: NetworkingError) {
-        // TODO: Handle error
+        let title = NSLocalizedString("alert_error", comment: "Error")
+        let alertController = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+        present(alertController, animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            alertController.dismiss(animated: true, completion: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+        }
     }
     
     func didSelectCategory(_ category: Category) {

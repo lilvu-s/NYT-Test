@@ -24,8 +24,15 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     func fetchCategories() {
         Task {
             do {
-                let categories = try await interactor.fetchCategories()
-                didFetchCategories(categories)
+                if NetworkingWorker.shared.isConnectedToInternet() {
+                    let categories = try await interactor.fetchCategories()
+                    
+                    didFetchCategories(categories)
+                } else {
+                    let categories = interactor.loadCategoriesFromRealm()
+                    
+                    didFetchCategories(categories)
+                }
             } catch let error as NetworkingError {
                 didFailWithError(error)
             } catch {

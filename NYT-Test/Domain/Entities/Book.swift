@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct BooksResponse: Codable {
     let results: ResultContainer
@@ -34,7 +33,7 @@ struct Book: Codable {
     let description: String?
     let author: String
     let publisher: String
-    var bookImage: URL?
+    let bookImage: URL?
     let buyLinks: [BuyLink]
     
     struct BuyLink: Codable {
