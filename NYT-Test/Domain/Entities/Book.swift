@@ -31,7 +31,7 @@ struct Book: Codable {
     
     let rank: Int
     let title: String
-    let description: String
+    let description: String?
     let author: String
     let publisher: String
     var bookImage: URL?

@@ -11,7 +11,7 @@ import UIKit
 protocol BooksPresenterProtocol: AnyObject {
     func fetchBooks()
     func didFetchBooks(_ books: [Book])
-    func didFetchImages(_ images: [UIImage])
+    func didFetchImages(_ images: [String: UIImage])
     func didFailWithError(_ error: NetworkingError)
 }
 
@@ -45,7 +45,7 @@ final class BooksPresenter: BooksPresenterProtocol {
         }
     }
     
-    func didFetchImages(_ images: [UIImage]) {
+    func didFetchImages(_ images: [String: UIImage]) {
         DispatchQueue.main.async { [weak self] in
             self?.viewController?.didFetchImages(images)
         }

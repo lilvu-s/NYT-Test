@@ -10,7 +10,7 @@ import SnapKit
 
 protocol BooksCollectionViewControllerProtocol: AnyObject {
     func didFetchBooks(_ books: [Book])
-    func didFetchImages(_ image: [UIImage])
+    func didFetchImages(_ image: [String: UIImage])
     func didFailWithError(_ error: NetworkingError)
     func setRouter(_ router: BooksRouter)
     
@@ -20,7 +20,7 @@ protocol BooksCollectionViewControllerProtocol: AnyObject {
 final class BooksCollectionViewController: UIViewController, BooksCollectionViewControllerProtocol {
     private var collectionView: UICollectionView?
     private var books: [Book] = []
-    private var images: [UIImage] = []
+    private var images: [String: UIImage] = [:]
     private var selectedCategory: Category?
     private var presenter: BooksPresenterProtocol?
     private var router: BooksRouter?
@@ -88,7 +88,7 @@ final class BooksCollectionViewController: UIViewController, BooksCollectionView
         print("Did fetch books. Count: \(books.count)")
     }
     
-    func didFetchImages(_ images: [UIImage]) {
+    func didFetchImages(_ images: [String: UIImage]) {
         self.images = images
         collectionView?.reloadData()
     }
@@ -144,7 +144,7 @@ extension BooksCollectionViewController: UICollectionViewDelegate, UICollectionV
         let book = books[indexPath.item]
         cell.configure(with: book)
         
-        let image = images[indexPath.item]
+        guard let image = images[book.id] else { return cell }
         cell.configureImage(with: image)
         return cell
     }

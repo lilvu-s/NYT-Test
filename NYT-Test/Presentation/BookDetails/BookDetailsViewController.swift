@@ -42,6 +42,7 @@ class BookDetailsViewController: UIViewController, BookDetailsViewControllerProt
         view.backgroundColor = .white
         
         presenter?.fetchBookDetails()
+        presenter?.fetchBookCover()
         
         setupViews()
         setupConstrains()
@@ -51,8 +52,7 @@ class BookDetailsViewController: UIViewController, BookDetailsViewControllerProt
     
     private func setupViews() {
         bookImageView = UIImageView()
-        bookImageView.contentMode = .scaleAspectFit
-        bookImageView.backgroundColor = .gray
+        bookImageView.contentMode = .scaleToFill
         view.addSubview(bookImageView)
         
         bookNameLabel = UILabel()
@@ -97,28 +97,29 @@ class BookDetailsViewController: UIViewController, BookDetailsViewControllerProt
     
     private func setupConstrains() {
         bookImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(40)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(150)
+            make.width.equalTo(280)
+            make.height.equalTo(400)
         }
         
         bookNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(bookImageView.snp.bottom).offset(20)
+            make.top.equalTo(bookImageView.snp.bottom).offset(30)
             make.left.right.equalToSuperview().inset(20)
         }
         
         authorLabel.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview().inset(20)
-        }
-        
-        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(bookNameLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview().inset(20)
         }
         
-        publisherLabel.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(authorLabel.snp.bottom).offset(10)
+            make.left.right.equalToSuperview().inset(20)
+        }
+        
+        publisherLabel.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview().inset(20)
         }
         
@@ -143,11 +144,13 @@ class BookDetailsViewController: UIViewController, BookDetailsViewControllerProt
     
     func updateWithBookDetails(book: Book) {        
         DispatchQueue.main.async { [weak self] in
-            self?.bookNameLabel.text = book.title
-            self?.authorLabel.text = book.author
-            self?.descriptionLabel.text = book.description
-            self?.publisherLabel.text = book.publisher
-            self?.rankLabel.text = "\(book.rank)"
+            guard let self = self else { return }
+            
+            self.bookNameLabel.text = book.title
+            self.authorLabel.text = book.author
+            self.descriptionLabel.text = book.description ?? "No description."
+            self.publisherLabel.text = book.publisher
+            self.rankLabel.text = "\(book.rank)"
         }
     }
     

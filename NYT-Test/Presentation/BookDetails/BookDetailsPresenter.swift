@@ -9,7 +9,7 @@ import Foundation
 
 protocol BookDetailsPresenterProtocol: AnyObject {
     func fetchBookDetails()
-//    func fetchBookCover(for book: Book)
+    func fetchBookCover()
 }
 
 class BookDetailsPresenter: BookDetailsPresenterProtocol {
@@ -31,19 +31,19 @@ class BookDetailsPresenter: BookDetailsPresenterProtocol {
             }
         }
     }
-    /* TODO: Loading image
-
-    func fetchBookCover(for book: Book) {
+    
+    func fetchBookCover() {
         Task {
             do {
-                let coverImage = try await interactor.loadBookCover(book: book)
-                print("Book cover fetched in presenter")
-                viewController?.updateWithBookCover(image: coverImage)
+                let image = try await interactor.loadImage()
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.viewController?.updateWithBookCover(image: image)
+                }
             } catch {
                 print("Error fetching book cover: \(error)")
             }
         }
     }
-    */
 }
 

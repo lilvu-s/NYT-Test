@@ -12,8 +12,7 @@ import UIKit
 protocol BooksInteractorProtocol: AnyObject {
     func fetchBooks() async throws -> [Book]
     func loadBookDetails(id: String) async throws -> Book
-    
-    var books: [Book] { get }
+    func loadImages() async throws -> [String: UIImage]
 }
 
 final class BooksInteractor: BooksInteractorProtocol {
@@ -44,8 +43,8 @@ final class BooksInteractor: BooksInteractorProtocol {
         return book
     }
     
-    func loadImages() async throws -> [UIImage] {
-        var images: [UIImage] = []
+    func loadImages() async throws -> [String: UIImage] {
+        var images: [String: UIImage] = [:]
         
         do {
             for book in books {
@@ -53,7 +52,7 @@ final class BooksInteractor: BooksInteractorProtocol {
                 
                 do {
                     let image = try await ImageLoader.shared.loadImage(from: imageURL)
-                    images.append(image)
+                    images[book.id] = image
                 } catch {
                     print("Failed to load image for book \(book.title): \(error)")
                 }

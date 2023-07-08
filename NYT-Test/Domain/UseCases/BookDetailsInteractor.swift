@@ -26,14 +26,14 @@ final class BookDetailsInteractor: BookDetailsInteractorProtocol {
         return book
     }
     
-    func loadBookCover(book: Book) async throws -> UIImage {
-        guard let url = book.bookImage else { return UIImage() }
+    func loadImage() async throws -> UIImage {
+        let images = try await booksInteractor.loadImages()
+        let book = try await loadBookDetails()
         
-        do {
-            let image = try await ImageLoader.shared.loadImage(from: url)
-            return image
-        } catch {
-            throw error
+        guard let image = images[book.id] else {
+            throw ImageLoaderError.imageNotFound
         }
+        
+        return image
     }
 }

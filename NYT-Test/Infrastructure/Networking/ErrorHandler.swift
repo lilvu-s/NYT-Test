@@ -37,15 +37,31 @@ final class ErrorHandler {
             case .indexOutOfRange:
                 print("Index out of range")
                 return .indexOutOfRange
-            case .invalidImageData:
-                print("Invalid image data")
-                return .invalidImageData
             default:
-                print("Unknown book loader error")
+                print("Unknown book loader error: \(error)")
                 return .unknown
             }
         } else {
-            print("Unknown error")
+            print("Unknown error: \(error)")
+            return .unknown
+        }
+    }
+    
+    static func handlerImageLoaderError(_ error: Error) -> ImageLoaderError {
+        if let error = error as? ImageLoaderError {
+            switch error {
+            case .imageNotFound:
+                print("Image not found")
+                return .imageNotFound
+            case .invalidImageData:
+                print("Invalid image data: \(error)")
+                return .invalidImageData
+            default:
+                print("Unknown image loader error: \(error)")
+                return .unknown
+            }
+        } else {
+            print("Unknown error: \(error)")
             return .unknown
         }
     }
@@ -65,5 +81,11 @@ enum BookLoaderError: Error {
     case bookNotFound
     case indexOutOfRange
     case invalidImageData
+    case unknown
+}
+
+enum ImageLoaderError: Error {
+    case invalidImageData
+    case imageNotFound
     case unknown
 }

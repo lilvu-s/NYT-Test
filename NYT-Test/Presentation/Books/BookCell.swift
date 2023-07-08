@@ -32,7 +32,7 @@ final class BookCell: UICollectionViewCell {
     
     private func setupViews() {
         bookImageView = UIImageView()
-        bookImageView.contentMode = .scaleAspectFill
+        bookImageView.contentMode = .scaleToFill
         contentView.addSubview(bookImageView)
         
         titleLabel = UILabel()

@@ -21,7 +21,8 @@ final class ImageLoader {
                     if let image = UIImage(data: data) {
                         continuation.resume(returning: image)
                     } else {
-                        continuation.resume(throwing: ImageLoadingError.invalidImageData)
+                        let error = ImageLoaderError.invalidImageData
+                        continuation.resume(throwing: ErrorHandler.handlerImageLoaderError(error))
                     }
                 case .failure(let error):
                     continuation.resume(throwing: error)
@@ -29,9 +30,5 @@ final class ImageLoader {
             }
         }
     }
-}
-
-enum ImageLoadingError: Error {
-    case invalidImageData
 }
 
