@@ -33,9 +33,8 @@ final class BookDetailsInteractor: BookDetailsInteractorProtocol {
     
     func loadImages() async throws -> UIImage {
         let images = try await booksInteractor.loadImages()
-        let book = try await loadBookDetails()
         
-        guard let image = images[book.id] else {
+        guard let image = images[id] else {
             throw ImageLoaderError.imageNotFound
         }
         

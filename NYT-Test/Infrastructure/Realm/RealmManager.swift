@@ -14,8 +14,6 @@ class RealmManager {
     init() {
         do {
             realm = try Realm()
-            let realmURL = realm.configuration.fileURL
-            print("Realm database location: \(realmURL?.path ?? "Unknown")")
         } catch {
             print("Failed to initialize Realm: \(error.localizedDescription)")
             fatalError("Failed to initialize Realm")

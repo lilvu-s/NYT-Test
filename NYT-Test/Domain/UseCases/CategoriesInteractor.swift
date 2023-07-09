@@ -13,8 +13,8 @@ protocol CategoriesInteractorProtocol: AnyObject {
 }
 
 final class CategoriesInteractor: CategoriesInteractorProtocol {
-    private let networkingWorker: NetworkingWorker
-    private let realmManager: RealmManager
+    private weak var networkingWorker: NetworkingWorker?
+    private weak var realmManager: RealmManager?
     
     init(networkingWorker: NetworkingWorker, realmManager: RealmManager) {
         self.networkingWorker = networkingWorker
@@ -22,18 +22,17 @@ final class CategoriesInteractor: CategoriesInteractorProtocol {
     }
     
     func fetchCategories() async throws -> [Category] {
-        if networkingWorker.isConnectedToInternet() {
+        if let networkingWorker = networkingWorker, networkingWorker.isConnectedToInternet() {
             do {
                 let categories = try await networkingWorker.fetchCategories()
                 let realmCategories = categories.map { convertCategoryToRealmCategory($0) }
-                realmManager.saveCategories(realmCategories)
+                realmManager?.saveCategories(realmCategories)
                 return categories
             } catch let error as AFError {
                 throw ErrorHandler.handleRequestError(error)
             }
         } else {
-            let realmCategories = realmManager.getAllCategories()
-            if let realmCategories = realmCategories {
+            if let realmManager = realmManager, let realmCategories = realmManager.getAllCategories() {
                 let categories = realmCategories.map { self.convertRealmCategoryToCategory($0) }
                 return Array(categories)
             }
@@ -42,7 +41,7 @@ final class CategoriesInteractor: CategoriesInteractorProtocol {
     }
     
     func loadCategoriesFromRealm() -> [Category] {
-        guard let realmCategories = realmManager.getAllCategories() else {
+        guard let realmManager = realmManager, let realmCategories = realmManager.getAllCategories() else {
             return []
         }
         return Array(realmCategories).map { convertRealmCategoryToCategory($0) }
