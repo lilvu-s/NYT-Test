@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0605082A69C35100E24AA7 /* BooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0605072A69C35100E24AA7 /* BooksPresenter.swift */; };
 		8E0A3B712A533FFB00CC78C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B702A533FFB00CC78C6 /* AppDelegate.swift */; };
 		8E0A3B732A533FFB00CC78C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B722A533FFB00CC78C6 /* SceneDelegate.swift */; };
 		8E0A3B752A533FFB00CC78C6 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A3B742A533FFB00CC78C6 /* CategoriesTableViewController.swift */; };
@@ -34,13 +35,13 @@
 		8EF7F2AD2A536DDB0039AAC1 /* BooksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2AC2A536DDB0039AAC1 /* BooksInteractor.swift */; };
 		8EF7F2AF2A536E8B0039AAC1 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2AE2A536E8B0039AAC1 /* CategoriesPresenter.swift */; };
 		8EF7F2B12A536E990039AAC1 /* BooksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B02A536E990039AAC1 /* BooksCollectionViewController.swift */; };
-		8EF7F2B72A536F4D0039AAC1 /* BooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B62A536F4D0039AAC1 /* BooksPresenter.swift */; };
 		8EF7F2B92A536F640039AAC1 /* BooksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7F2B82A536F640039AAC1 /* BooksRouter.swift */; };
 		8EFC36B02A54604900DA2F26 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC36AF2A54604900DA2F26 /* CategoryCell.swift */; };
 		8EFC36B52A5469E600DA2F26 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EFC36B72A5469E600DA2F26 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E0605072A69C35100E24AA7 /* BooksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksPresenter.swift; sourceTree = "<group>"; };
 		8E0A3B6D2A533FFB00CC78C6 /* NYT-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYT-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0A3B702A533FFB00CC78C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E0A3B722A533FFB00CC78C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		8EF7F2AC2A536DDB0039AAC1 /* BooksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksInteractor.swift; sourceTree = "<group>"; };
 		8EF7F2AE2A536E8B0039AAC1 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		8EF7F2B02A536E990039AAC1 /* BooksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCollectionViewController.swift; sourceTree = "<group>"; };
-		8EF7F2B62A536F4D0039AAC1 /* BooksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BooksPresenter.swift; path = ../Categories/BooksPresenter.swift; sourceTree = "<group>"; };
 		8EF7F2B82A536F640039AAC1 /* BooksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRouter.swift; sourceTree = "<group>"; };
 		8EFC36AF2A54604900DA2F26 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		8EFC36B62A5469E600DA2F26 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			children = (
 				8E4BA6482A537E96005EA87C /* BookCell.swift */,
 				8EF7F2B02A536E990039AAC1 /* BooksCollectionViewController.swift */,
-				8EF7F2B62A536F4D0039AAC1 /* BooksPresenter.swift */,
+				8E0605072A69C35100E24AA7 /* BooksPresenter.swift */,
 				8EF7F2B82A536F640039AAC1 /* BooksRouter.swift */,
 			);
 			path = Books;
@@ -329,9 +329,9 @@
 				8E0A3B9A2A53551600CC78C6 /* Book.swift in Sources */,
 				8EFC36B02A54604900DA2F26 /* CategoryCell.swift in Sources */,
 				8EF7F2B12A536E990039AAC1 /* BooksCollectionViewController.swift in Sources */,
-				8EF7F2B72A536F4D0039AAC1 /* BooksPresenter.swift in Sources */,
 				8E0A3B712A533FFB00CC78C6 /* AppDelegate.swift in Sources */,
 				8EF7F2AB2A536DCF0039AAC1 /* CategoriesInteractor.swift in Sources */,
+				8E0605082A69C35100E24AA7 /* BooksPresenter.swift in Sources */,
 				8E92793C2A597E4C0049B063 /* RealmModels.swift in Sources */,
 				8E0A3B952A534FF600CC78C6 /* Category.swift in Sources */,
 				8EF7F2AF2A536E8B0039AAC1 /* CategoriesPresenter.swift in Sources */,
